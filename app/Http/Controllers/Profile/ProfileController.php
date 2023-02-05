@@ -19,25 +19,24 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'account_id' => ['required', 'exists:users'],
             'gender_id' => ['required', 'exists:genders'],
             'first_name' => ['required', 'string', 'max:25', 'alpha'],
             'last_name' => ['required', 'string', 'max:25', 'alpha'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'display_picture_link' => ['required', 'mimes:jpeg, jpg, png'],
+            'email' => ['required', 'string', 'email', 'max:100'],
+            'display_picture_link' => ['required'],
         ]);
 
         $imageName = str_replace(' ', '-', $request->first_name) . '-' . str_replace(' ', '-',  $request->last_name);
-        $imagePath = $request->file('picture')->store('/public/images/users/' . $imageName);
+        $imagePath = $request->file('display_picture_link')->store('/public/images/users/' . $imageName);
         $imagePath = str_replace('public/', '', $imagePath);
 
-        $account = User::find($request->account_id);
-        $account->gender_id = $request->gender_id;
-        $account->first_name = $request->first_name;
-        $account->last_name = $request->last_name;
-        $account->email = $request->email;
-        $account->display_picture_link = $imagePath;
-        $account->save();
+        $user = User::find(Auth::user()->account_id);
+        $user->gender_id = $request->gender_id;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->display_picture_link = $imagePath;
+        $user->save();
 
         return view('profile-saved');
     }

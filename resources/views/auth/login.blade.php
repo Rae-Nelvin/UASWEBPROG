@@ -22,13 +22,13 @@
                     @enderror
                 </div>
                 <div class="flex flex-row items-center">
-                    <input type="checkbox" name="remember" class="font-normal text-base mr-2 rounded-sm">Keep me signed in
+                    <input type="checkbox" name="remember"
+                        class="font-normal text-base mr-2 rounded-sm">{{ __('login.Remember me') }}
                 </div>
                 <button
-                    class="mt-9 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">Log
-                    In</button>
+                    class="mt-9 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">{{ __('login.Log In') }}</button>
             </form>
-            <p class="text-base font-normal text-center mt-14">Don't have an account? <a href="{{ route('register') }}"
+            <p class="text-base font-normal text-center mt-14">{{ __('login.No Account') }} <a href="{{ route('register') }}"
                     class="text-[#067A46]">Sign up</a></p>
         </div>
     </div>

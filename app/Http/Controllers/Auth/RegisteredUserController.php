@@ -38,13 +38,13 @@ class RegisteredUserController extends Controller
             'gender_id' => ['required', 'exists:genders'],
             'first_name' => ['required', 'string', 'max:25', 'alpha'],
             'last_name' => ['required', 'string', 'max:25', 'alpha'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:accounts'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'display_picture_link' => ['required', 'mimes:jpeg, jpg, png'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $imageName = str_replace(' ', '-', $request->first_name) . '-' . str_replace(' ', '-',  $request->last_name);
-        $imagePath = $request->file('picture')->store('/public/images/users/' . $imageName);
+        $imagePath = $request->file('display_picture_link')->store('/public/images/users/' . $imageName);
         $imagePath = str_replace('public/', '', $imagePath);
 
         $user = User::create([

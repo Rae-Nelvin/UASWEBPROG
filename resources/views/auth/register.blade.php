@@ -2,14 +2,14 @@
 @section('content')
     <div class="flex flex-row justify-center my-16">
         <div class="flex flex-col w-1/4 border-gray-200 border py-4 px-6">
-            <h1 class="font-semibold text-[32px] text-center">Create an Amazing <br>E-grocery Account</h1>
+            <h1 class="font-semibold text-[32px] text-center">{!! __('register.title') !!}</h1>
             <form action="{{ route('register') }}" class="w-full flex flex-col mt-8 space-y-4" enctype="multipart/form-data"
                 method="POST">
                 @csrf
                 <div class="flex flex-col space-y-1">
                     <input type="text" name="first_name"
                         class="w-full rounded-md border-[1px] border-[#676767] py-3 px-2 font-normal text-base"
-                        placeholder="First Name">
+                        placeholder="{{ __('register.First Name') }}">
                     @error('first_name')
                         <p class="text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -17,7 +17,7 @@
                 <div class="flex flex-col space-y-1">
                     <input type="text" name="last_name"
                         class="w-full rounded-md border-[1px] border-[#676767] py-3 px-2 font-normal text-base"
-                        placeholder="Last Name">
+                        placeholder="{{ __('register.Last Name') }}">
                     @error('last_name')
                         <p class="text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -44,12 +44,12 @@
                 <div class="flex flex-col space-y-1">
                     <div class="flex flex-col text-[#676767] font-normal text-base space-y-2 ml-2">
                         <label for="Gender">Gender: </label>
-                        <div class="flex flex-row justify-between w-1/3 items-center">
+                        <div class="flex flex-row justify-between w-1/2 items-center">
                             <div class="flex flex-row space-x-2 items-center">
-                                <input type="radio" name="gender_id" class="mr-2" value="1">Female
+                                <input type="radio" name="gender_id" class="mr-2" value="1">{{ __('register.gender.Male') }}
                             </div>
                             <div class="flex flex-row space-x-2 items-center">
-                                <input type="radio" name="gender_id" class="mr-2" value="2">Male
+                                <input type="radio" name="gender_id" class="mr-2" value="2">{{ __('register.gender.Female') }}
                             </div>
                         </div>
                     </div>
@@ -76,15 +76,15 @@
                 <div class="flex flex-col space-y-1">
                     <input type="password" name="password_confirmation"
                         class="w-full rounded-md border-[1px] border-[#676767] py-3 px-2 font-normal text-base"
-                        placeholder="Confirm Password">
+                        placeholder="{{ __('register.Confirm Password') }}">
                     @error('password_confirmation')
                         <p class="text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
                 <button
-                    class="mt-9 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">Submit</button>
+                    class="mt-9 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">{{ __('register.Submit') }}</button>
             </form>
-            <p class="text-base font-normal text-center mt-3">Already have an account? <a href="{{ route('login') }}"
+            <p class="text-base font-normal text-center mt-3">{{ __('register.Have Account') }} <a href="{{ route('login') }}"
                     class="text-[#067A46]">Log in</a></p>
         </div>
     </div>

@@ -35,7 +35,7 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
-        return redirect('admin/users');
+        return redirect('admin/account-maintenance');
     }
 
     public function delete($id)
@@ -43,6 +43,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('admin/users');
+        return redirect('admin/account-maintenance');
     }
 }

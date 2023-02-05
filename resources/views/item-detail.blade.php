@@ -13,7 +13,7 @@
                         @csrf
                         <input type="hidden" name="item_id" value="{{ $item->item_id }}">
                         <button
-                            class="mt-24 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-sm hover:bg-[#157248] transition-colors duration-300 ease-in-out">Buy</button>
+                            class="mt-24 w-full bg-[#067A46] text-white text-base font-bold py-3 rounded-sm hover:bg-[#157248] transition-colors duration-300 ease-in-out">{{ __('home.Buy') }}</button>
                     </form>
                 </div>
             </div>

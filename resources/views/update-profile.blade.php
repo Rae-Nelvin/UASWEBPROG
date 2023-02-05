@@ -5,17 +5,17 @@
         <div class="flex flex-row w-full justify-center mt-4 mb-6">
             <img src="{{ asset('storage/' . $user->display_picture_link ) }}" alt="{{ $user->first_name . $user->last_name }}" class="rounded-full w-[150px] h-[150px]">
         </div>
-        <form action="#" method="POST" enctype="multipart/form-data" class="flex flex-col space-y-4">
+        <form action="/user/profile" method="POST" enctype="multipart/form-data" class="flex flex-col space-y-4">
             @csrf
             <div class="flex flex-col space-y-1">
-                <label for="First Name" class="font-normal text-base text-[#87898E]">First Name</label>
+                <label for="First Name" class="font-normal text-base text-[#87898E]">{{ __('register.First Name') }}</label>
                 <input type="text" name="first_name" class="w-full border border-[#DFDFE6] rounded-lg p-4" value="{{ $user->first_name }}">
                 @error('first_name')
                     <p class="text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             <div class="flex flex-col space-y-1">
-                <label for="Last Name" class="font-normal text-base text-[#87898E]">Last Name</label>
+                <label for="Last Name" class="font-normal text-base text-[#87898E]">{{ __('register.Last Name') }}</label>
                 <input type="text" name="last_name" class="w-full border border-[#DFDFE6] rounded-lg p-4" value="{{ $user->last_name }}">
                 @error('last_name')
                     <p class="text-sm text-red-600">{{ $message }}</p>
@@ -32,10 +32,10 @@
                 <label for="Gender">Gender: </label>
                 <div class="flex flex-row justify-between w-1/3 items-center">
                     <div class="flex flex-row space-x-2 items-center">
-                        <input type="radio" name="gender_id" class="mr-2" value="1">Female
+                        <input type="radio" name="gender_id" class="mr-2" value="1">{{ __('register.gender.Male') }}
                     </div>
                     <div class="flex flex-row space-x-2 items-center">
-                        <input type="radio" name="gender_id" class="mr-2" value="2">Male
+                        <input type="radio" name="gender_id" class="mr-2" value="2">{{ __('register.gender.Female') }}
                     </div>
                 </div>
                 @error('gender_id')
@@ -59,7 +59,7 @@
             </div>
             <div class="flex flex-row justify-center">
                 <button
-                    class="mt-7 w-1/2 bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">Save</button>
+                    class="mt-7 w-1/2 bg-[#067A46] text-white text-base font-bold py-3 rounded-md hover:bg-[#157248] transition-colors duration-300 ease-in-out">{{ __('home.Save') }}</button>
             </div>
         </form>
     </div>

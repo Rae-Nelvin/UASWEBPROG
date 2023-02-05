@@ -1,14 +1,14 @@
 @extends('layouts.guest')
 @section('content')
     <div class="flex flex-col my-12 mx-32">
-        <h1 class="font-semibold text-[40px] text-[#41A430]">Account Maintenance</h1>
+        <h1 class="font-semibold text-[40px] text-[#41A430]">{{ __('home.Navigation.Account Maintenance') }}</h1>
         <div class="flex flex-row justify-center my-16">
             <div class="relative overflow-x-auto w-1/2">
                 <table class="w-full text-xl text-left">
                     <thead class="text-2xl font-bold text-gray-700 text-center border-b-gray-300 border-b">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Account
+                                {{ __('home.Account') }}
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Role
@@ -36,7 +36,7 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <a href="#" class="cursor-pointer">
+                                    <a href="{{ route('admin.delete-profile', $user->account_id) }}" class="cursor-pointer">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
                                             viewBox="0 0 256 256" class="text-[#DE5462] hover:text-[#802730]">
                                             <path fill="currentColor"

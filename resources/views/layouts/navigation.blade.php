@@ -11,13 +11,12 @@
             </a>
             @auth
                 <a href="{{ route('user.dashboard') }}"
-                    class="text-lg font-normal cursor-pointer hover:text-[#41A430]">Home</a>
-                <a href="{{ route('user.cart') }}" class="text-lg font-normal cursor-pointer hover:text-[#41A430]">Cart</a>
+                    class="text-lg font-normal cursor-pointer hover:text-[#41A430]">{{ __('home.Navigation.Home') }}</a>
+                <a href="{{ route('user.cart') }}" class="text-lg font-normal cursor-pointer hover:text-[#41A430]">{{ __('home.Navigation.Cart') }}</a>
                 <a href="{{ route('user.profile') }}"
-                    class="text-lg font-normal cursor-pointer hover:text-[#41A430]">Profile</a>
+                    class="text-lg font-normal cursor-pointer hover:text-[#41A430]">{{ __('home.Navigation.Profile') }}</a>
                 @if (Auth::user()->account_id == 1)
-                    <a href="{{ route('admin.account-maintenance') }}" class="text-lg font-normal cursor-pointer hover:text-[#41A430]">Account
-                        Maintenance</a>
+                    <a href="{{ route('admin.account-maintenance') }}" class="text-lg font-normal cursor-pointer hover:text-[#41A430]">{{ __('home.Navigation.Account Maintenance') }}</a>
                 @endif
             @endauth
         </div>
@@ -33,11 +32,15 @@
             </svg>
         </button>
         <div class="hidden w-full md:flex md:w-auto md:flex-row md:space-x-5" id="navbar-default">
+            <div class="flex flex-row items-center text-sm text-gray-600 space-x-5 underline">
+                <a href="{{ route('lang.switch', 'id') }}" class="hover:text-black">ID</a>
+                <a href="{{ route('lang.switch', 'en') }}" class="hover:text-black">EN</a>
+            </div>
             @auth
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button
-                        class="py-3 px-8 cursor-pointer border-[1px] border-[#067A46] text-[#067A46] text-base font-bold rounded-md hover:bg-[#067A46] hover:text-white transition-all duration-300 ease-in-out">Logout</button>
+                        class="py-3 px-8 cursor-pointer border-[1px] border-[#067A46] text-[#067A46] text-base font-bold rounded-md hover:bg-[#067A46] hover:text-white transition-all duration-300 ease-in-out">{{ __('home.Navigation.Logout') }}</button>
                 </form>
             @else
                 <a href="{{ route('register') }}"
